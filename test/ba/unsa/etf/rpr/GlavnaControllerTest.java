@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr;
 
-import javafx.fxml.FXMLLoader;
+/*import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -172,4 +172,4 @@ class GlavnaControllerTest {
             }
         assertTrue(pronadjeno);
     }
-}
+}*/

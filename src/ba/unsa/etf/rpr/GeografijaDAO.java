@@ -49,6 +49,11 @@ public class GeografijaDAO {
         }
     }
 
+    public static void removeInstance() {
+        instance = null;
+    }
+
+
     private void regenerisiBazu() {
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:korisnici.db");

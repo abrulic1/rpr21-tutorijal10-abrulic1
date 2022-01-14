@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.GlavnaController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,11 +11,29 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
-public class Main{
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        GlavnaController ctrl = new GlavnaController();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/glavna.fxml"));
+        loader.setController(ctrl);
+        Parent root = loader.load();
+        primaryStage.setTitle("Gradovi svijeta");
+        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        primaryStage.setMinWidth(140);
+        primaryStage.show();
+    }
+
 
     public static void main(String[] args) {
+        launch(args);
     }
+
 
     public static String ispisiGradove() {
         File dbfile = new File("baza.db");
