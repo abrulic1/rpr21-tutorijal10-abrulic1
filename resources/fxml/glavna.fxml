@@ -65,7 +65,7 @@
                 </Button>
                 <Button fx:id="btnIzmijeniGrad" mnemonicParsing="false" onAction="#izmijeniGrad" prefHeight="25.0" prefWidth="110.0" text="Izmijeni grad">
                     <VBox.margin>
-                        <Insets top="4.0" />
+                        <Insets top="4.0"/>
                     </VBox.margin>
                 </Button>
                 <Button fx:id="btnObrisiGrad" mnemonicParsing="false" onAction="#obrisiGrad" prefHeight="25.0" prefWidth="110.0" text="Obriši grad">
