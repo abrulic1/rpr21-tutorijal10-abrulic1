@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import javafx.beans.value.ObservableValue;
+
 public class Grad {
     private int id;
     private String naziv;
@@ -47,4 +49,29 @@ public class Grad {
     public void setDrzava(Drzava drzava) {
         this.drzava = drzava;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!( o instanceof Grad )) return false;
+
+        Grad grad = (Grad) o;
+
+        if (getId() != grad.getId()) return false;
+        if (getBrojStanovnika() != grad.getBrojStanovnika()) return false;
+        if (getNaziv() != null ? !getNaziv().equals(grad.getNaziv()) : grad.getNaziv() != null) return false;
+        return getDrzava() != null ? getDrzava().equals(grad.getDrzava()) : grad.getDrzava() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + ( getNaziv() != null ? getNaziv().hashCode() : 0 );
+        result = 31 * result + getBrojStanovnika();
+        result = 31 * result + ( getDrzava() != null ? getDrzava().hashCode() : 0 );
+        return result;
+    }
+
+
+
 }
