@@ -150,7 +150,7 @@ public class GeografijaDAO {
             obrisiGradIzBazeUpit.execute();
             //ako je glavni grad mora se i njegova drzava obrisati
         } catch (SQLException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
 
 
@@ -292,7 +292,7 @@ public class GeografijaDAO {
             stmt.executeUpdate("DELETE FROM drzava");
             regenerisiBazu();
         } catch (SQLException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
     }
 
@@ -308,7 +308,7 @@ public class GeografijaDAO {
                 vratiDrzavu(grad);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
         return grad;
     }
@@ -325,7 +325,7 @@ public class GeografijaDAO {
                 vrati.add(drzava);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
 
         return vrati;
@@ -355,17 +355,6 @@ public class GeografijaDAO {
         }
         return id;
     }
-
-   /* public int vratiStariIDGrada(String naziv) {
-        try {
-            trenutniIDGradaUpit.setString(1, naziv);
-            ResultSet rs= trenutniIDGradaUpit.executeQuery();
-            if(rs.next()) return rs.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }*/
 
 
 }

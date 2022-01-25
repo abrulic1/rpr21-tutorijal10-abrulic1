@@ -1,0 +1,38 @@
+
+Q	java:S125!"<This block of commented-out lines of code should be removed.(Üù•Û
+C	java:S108@")Either remove or fill this block of code.(é–³öûÿÿÿÿ
+c	java:S100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Ç¨·
+H
+java:S1172N"2Remove this unused method parameter "actionEvent".(¡Ç¨·
+H
+java:S1172W"2Remove this unused method parameter "actionEvent".(ÚŠÕİ
+F
+java:S1481Z"0Remove this unused "nazivDrzave" local variable.(ÔÇÙå
+C	java:S108b")Either remove or fill this block of code.(é–³öûÿÿÿÿ
+P	java:S125r"<This block of commented-out lines of code should be removed.(ŒÆŸ
+_
+java:S1128"IRemove this unused import 'javafx.beans.property.ReadOnlyObjectProperty'.(¡ßÎ
+]
+java:S1128"GRemove this unused import 'javafx.beans.property.SimpleStringProperty'.(ûĞùÑ
+P
+java:S1068":Remove this unused "gradoviIzGeografijaDAO" private field.(â Á
+F
+java:S1068"+Remove this unused "gradovi" private field.(ŠœØ¹úÿÿÿÿ
+]
+java:S1192."GDefine a constant instead of duplicating this literal "prazno" 6 times.(ÔÕøƒ
+e
+java:S11924"JDefine a constant instead of duplicating this literal "popunjeno" 4 times.(ĞÏó½ÿÿÿÿÿ
+„
+java:S1319"iThe type of "countries" should be an interface such as "List" rather than the implementation "ArrayList".(ÕĞé€ÿÿÿÿÿ
+l
+java:S1104"VMake fieldNaziv a static final constant or non-public and provide accessors if needed.(ÈšÁ³
+g
+java:S1104"QMake btnOk a static final constant or non-public and provide accessors if needed.(‰õÀæ
+k
+java:S1104"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó
+u
+java:S1104"_Make fieldBrojStanovnika a static final constant or non-public and provide accessors if needed.(ÂÿÓ‡
+n
+java:S1104"XMake choiceDrzava a static final constant or non-public and provide accessors if needed.(¶üÌ
+f
+java:S1104"PMake grad a static final constant or non-public and provide accessors if needed.(¨ğ¾Á
