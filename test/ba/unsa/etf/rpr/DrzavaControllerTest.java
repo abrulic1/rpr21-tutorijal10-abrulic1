@@ -22,7 +22,7 @@ class DrzavaControllerTest {
     Stage theStage;
     DrzavaController ctrl;
 
-   /* @Start
+    @Start
     public void start (Stage stage) throws Exception {
         GeografijaDAO dao = GeografijaDAO.getInstance();
         dao.vratiBazuNaDefault();
@@ -37,7 +37,7 @@ class DrzavaControllerTest {
         stage.toFront();
         theStage = stage;
     }
-*/
+
     @Test
     public void testValidacijaDrzave(FxRobot robot) {
         // Klik na dugme ok

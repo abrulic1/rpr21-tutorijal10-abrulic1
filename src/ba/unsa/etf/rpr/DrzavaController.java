@@ -20,19 +20,24 @@ public class DrzavaController {
     public Button btnCancel;
    public Drzava drzava=null;
     GeografijaDAO dao=GeografijaDAO.getInstance();
-    private ObservableList<Grad> gradovi;
     private ArrayList<Grad> gradovi2=dao.gradovi();
+    private ObservableList<Grad> gradovi=FXCollections.observableList(gradovi2);
+
+    public DrzavaController(Drzava drzava, ArrayList<Grad> gradovi) {
+        this.drzava=drzava;
+        this.gradovi2 = gradovi;
+    }
 
     @FXML
+
     public void initialize(){
-        gradovi= FXCollections.observableList(gradovi2);
         choiceGrad.setItems(gradovi);
         choiceGrad.getSelectionModel().selectFirst();
         //TextField je po defaultu crven, kasnije postaje zelen ili crven zavisno od unosa
         fieldNaziv.getStyleClass().add("prazno");
 
         fieldNaziv.textProperty().addListener((obs,oldNaziv,newNaziv)->{
-            if(!newNaziv.isEmpty()){
+            if(!newNaziv.trim().isEmpty()){
                 fieldNaziv.getStyleClass().removeAll("prazno");
                 fieldNaziv.getStyleClass().add("popunjeno");
             }
@@ -49,7 +54,7 @@ public class DrzavaController {
     }
 
     public void btnOkAction (ActionEvent actionEvent){
-        if(!fieldNaziv.getText().isEmpty()  && drzava==null){
+        if(!fieldNaziv.getText().trim().isEmpty()  && drzava==null){
             Drzava nova=new Drzava();
             drzava=nova;
             drzava.setNaziv(fieldNaziv.getText());
@@ -57,8 +62,11 @@ public class DrzavaController {
             int id=dao.IDDrzave();
             drzava.setId(id);
         }
-        Stage stage=(Stage) btnCancel.getScene().getWindow();
-        stage.close();
+
+        if(!fieldNaziv.getText().trim().isEmpty()){
+            Stage stage = (Stage) btnOk.getScene().getWindow();
+            stage.close();
+        }
     }
 
     public Drzava getDrzavu() {

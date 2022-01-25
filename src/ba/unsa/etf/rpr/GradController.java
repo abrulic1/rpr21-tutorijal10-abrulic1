@@ -24,7 +24,7 @@ public class GradController {
     private ArrayList<Grad> gradoviIzGeografijaDAO=dao.gradovi();
     private ObservableList<Grad> gradovi;
     private ArrayList<Drzava>drzaveIzGeografijaDAO=dao.drzave();
-    private ObservableList<Drzava> drzave;
+    private ObservableList<Drzava> drzave=FXCollections.observableList(drzaveIzGeografijaDAO);
 
     public GradController(Grad gradKojiSeEdituje, ArrayList<Drzava> countries){
         grad=gradKojiSeEdituje;
@@ -47,7 +47,7 @@ public class GradController {
         fieldBrojStanovnika.getStyleClass().add("prazno");
 
         fieldNaziv.textProperty().addListener((obs,oldNaziv,newNaziv)->{
-            if(!newNaziv.isEmpty()){
+            if(!newNaziv.trim().isEmpty()){
                 fieldNaziv.getStyleClass().removeAll("prazno");
                 fieldNaziv.getStyleClass().add("popunjeno");
             }
@@ -65,7 +65,7 @@ public class GradController {
             }catch(NumberFormatException e){
 
             }
-            if(!newBroj.isEmpty() && broj>0){
+            if(!newBroj.trim().isEmpty() && broj>0){
                 fieldBrojStanovnika.getStyleClass().removeAll("prazno");
                 fieldBrojStanovnika.getStyleClass().add("popunjeno");
             }
@@ -101,7 +101,7 @@ public class GradController {
 
         }
 
-        if (!fieldBrojStanovnika.getText().isEmpty() && broj > 0)
+        if (!fieldBrojStanovnika.getText().trim().isEmpty() && broj > 0)
             brojStanovnika = broj;
         if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0 && grad==null){
             //null, dodaje se novi grad, treba mu novi id
@@ -120,7 +120,8 @@ public class GradController {
             int stariID=dao.vratiStariIDGrada(naziv);
             grad.setId(stariID);
         }*/
+        if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0){
         Stage stage=(Stage) btnOk.getScene().getWindow();
-        stage.close();
+        stage.close();}
     }
 }

@@ -227,22 +227,22 @@ public class GeografijaDAO {
         }
     }
 
-     void dodajDrzavu(Drzava drzava){
+    void dodajDrzavu(Drzava drzava){
         //nez jel treba provjera da li postoji drzava
-         try {
-             ResultSet rs=vratiMaxIDDrzavaUpit.executeQuery();
-             int id=1;
-             if(rs.next())id=rs.getInt(1)+1;
-             drzava.setId(id);
-             dodajDrzavuUpit.setInt(1, id);
-             dodajDrzavuUpit.setString(2, drzava.getNaziv());
-             dodajDrzavuUpit.setInt(3, drzava.getGlavniGrad().getId());
-             dodajDrzavuUpit.executeUpdate();
-         } catch (SQLException e) {
-           //  e.printStackTrace();
-         }
+        try {
+            ResultSet rs=vratiMaxIDDrzavaUpit.executeQuery();
+            int id=1;
+            if(rs.next())id=rs.getInt(1)+1;
+            drzava.setId(id);
+            dodajDrzavuUpit.setInt(1, id);
+            dodajDrzavuUpit.setString(2, drzava.getNaziv());
+            dodajDrzavuUpit.setInt(3, drzava.getGlavniGrad().getId());
+            dodajDrzavuUpit.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-     }
+    }
 
 
     void izmijeniGrad(Grad grad){
@@ -373,6 +373,7 @@ public class GeografijaDAO {
         }
         return 0;
     }*/
+
 
 
 

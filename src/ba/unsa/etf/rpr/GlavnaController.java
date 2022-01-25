@@ -51,7 +51,7 @@ public class GlavnaController {
     }
 
     public void DodajDrzavuAction(ActionEvent actionEvent) throws IOException {
-       DrzavaController kontroler = new DrzavaController();
+       DrzavaController kontroler = new DrzavaController(null, GeografijaDAO.getInstance().gradovi());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/drzava.fxml"));
         loader.setController(kontroler);
         Parent root = loader.load();
