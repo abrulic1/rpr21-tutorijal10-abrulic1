@@ -19,7 +19,7 @@ public class GradController {
     public Button btnCancel;
     public TextField fieldBrojStanovnika;
     public ChoiceBox<Drzava> choiceDrzava;
-   public Grad grad=new Grad();
+   public Grad grad=null;
     GeografijaDAO dao = GeografijaDAO.getInstance();
     private ArrayList<Grad> gradoviIzGeografijaDAO=dao.gradovi();
     private ObservableList<Grad> gradovi;
@@ -27,6 +27,7 @@ public class GradController {
     private ObservableList<Drzava> drzave;
 
     public GradController(Grad gradKojiSeEdituje, ArrayList<Drzava> countries){
+        grad=gradKojiSeEdituje;
         //Još jedan parametar konstruktoru klase GradController - prima grad koji se edituje ili null ako je u pitanju dodavanje novog grada.
         drzaveIzGeografijaDAO=countries;
         //drzave=FXCollections.observableList(drzaveIzGeografijaDAO);
@@ -77,7 +78,6 @@ public class GradController {
     }
 
     public void CancelAction(ActionEvent actionEvent) {
-       // getGrad();
         Stage stage=(Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
@@ -103,14 +103,23 @@ public class GradController {
 
         if (!fieldBrojStanovnika.getText().isEmpty() && broj > 0)
             brojStanovnika = broj;
-        if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0){
+        if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0 && grad==null){
+            //null, dodaje se novi grad, treba mu novi id
+            Grad novi=new Grad();
+            grad=novi;
         grad.setNaziv(naziv);
         grad.setBrojStanovnika(brojStanovnika);
         grad.setDrzava(choiceDrzava.getSelectionModel().getSelectedItem());
          int id=dao.IDGrada();
          grad.setId(id);
         }
-        else grad=null;
+        /*else if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0 && grad!=null){
+            grad.setNaziv(naziv);
+            grad.setBrojStanovnika(brojStanovnika);
+            grad.setDrzava(choiceDrzava.getSelectionModel().getSelectedItem());
+            int stariID=dao.vratiStariIDGrada(naziv);
+            grad.setId(stariID);
+        }*/
         Stage stage=(Stage) btnOk.getScene().getWindow();
         stage.close();
     }

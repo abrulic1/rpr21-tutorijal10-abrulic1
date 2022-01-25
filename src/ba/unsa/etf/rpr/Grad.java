@@ -72,6 +72,10 @@ public class Grad {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return getNaziv();
+    }
 
 
 }
