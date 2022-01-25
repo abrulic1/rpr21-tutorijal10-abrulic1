@@ -18,18 +18,24 @@ public class GradController {
     public Button btnOk;
     public Button btnCancel;
     public TextField fieldBrojStanovnika;
-    public ChoiceBox<String> choiceDrzava;
-
+    public ChoiceBox<Drzava> choiceDrzava;
+   public Grad grad=new Grad();
     GeografijaDAO dao = GeografijaDAO.getInstance();
     private ArrayList<Grad> gradoviIzGeografijaDAO=dao.gradovi();
     private ObservableList<Grad> gradovi;
-    private ArrayList<String>drzaveIzGeografijaDAO=dao.drzave();
-    private ObservableList<String> drzave;
+    private ArrayList<Drzava>drzaveIzGeografijaDAO=dao.drzave();
+    private ObservableList<Drzava> drzave;
 
-    public GradController(){
-        drzave=FXCollections.observableList(drzaveIzGeografijaDAO);
+    public GradController(Grad gradKojiSeEdituje, ArrayList<Drzava> countries){
+        //Još jedan parametar konstruktoru klase GradController - prima grad koji se edituje ili null ako je u pitanju dodavanje novog grada.
+        drzaveIzGeografijaDAO=countries;
+        //drzave=FXCollections.observableList(drzaveIzGeografijaDAO);
+
     }
 
+    public GradController() {
+        drzave=FXCollections.observableList(drzaveIzGeografijaDAO);
+    }
 
     @FXML
     public void initialize(){
@@ -71,14 +77,20 @@ public class GradController {
     }
 
     public void CancelAction(ActionEvent actionEvent) {
+       // getGrad();
         Stage stage=(Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
 
-    public void getGradAction(ActionEvent actionEvent) {
+    public Grad getGrad() {
+      return grad;
+    }
+
+    public void btnOkAction(ActionEvent actionEvent) {
         String naziv = "";
         int brojStanovnika = 0;
         String nazivDrzave="";
+
         if (!fieldNaziv.getText().isEmpty())
             naziv = fieldNaziv.getText();
 
@@ -91,8 +103,15 @@ public class GradController {
 
         if (!fieldBrojStanovnika.getText().isEmpty() && broj > 0)
             brojStanovnika = broj;
-
-       nazivDrzave= String.valueOf(choiceDrzava.getSelectionModel().selectedItemProperty());
-
+        if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0){
+        grad.setNaziv(naziv);
+        grad.setBrojStanovnika(brojStanovnika);
+        grad.setDrzava(choiceDrzava.getSelectionModel().getSelectedItem());
+         int id=dao.IDGrada();
+         grad.setId(id);
+        }
+        else grad=null;
+        Stage stage=(Stage) btnOk.getScene().getWindow();
+        stage.close();
     }
 }

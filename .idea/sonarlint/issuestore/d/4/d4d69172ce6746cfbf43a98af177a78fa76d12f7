@@ -1,0 +1,20 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(¢ÀÊùÿÿÿÿ
+c	java:S100$"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡Ç¨·
+H
+java:S1172$"2Remove this unused method parameter "actionEvent".(¡Ç¨·
+T
+java:S1128">Remove this unused import 'javafx.beans.value.ChangeListener'.(¸÷Í
+U
+java:S1128"?Remove this unused import 'javafx.beans.value.ObservableValue'.(´œ«Å
+d
+java:S1192"GDefine a constant instead of duplicating this literal "prazno" 3 times.(ÔÕøƒ8ÂÀÄËç/
+l
+java:S1104"VMake fieldNaziv a static final constant or non-public and provide accessors if needed.(ÈšÁ³
+q
+java:S1104"VMake choiceGrad a static final constant or non-public and provide accessors if needed.(¢ÀÊùÿÿÿÿ
+g
+java:S1104"QMake btnOk a static final constant or non-public and provide accessors if needed.(‰õÀæ
+k
+java:S1104"UMake btnCancel a static final constant or non-public and provide accessors if needed.(ñÙ•Ó

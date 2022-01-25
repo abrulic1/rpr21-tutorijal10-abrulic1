@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr;
 
-/*import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -143,7 +143,7 @@ class GlavnaControllerTest {
         assertEquals(123456, graz.getBrojStanovnika());
     }
 
-    @Test
+   @Test
     public void testDodajDrzavu(FxRobot robot) {
         // Otvaranje forme za dodavanje
         robot.clickOn("#btnDodajDrzavu");
@@ -172,4 +172,4 @@ class GlavnaControllerTest {
             }
         assertTrue(pronadjeno);
     }
-}*/
+}

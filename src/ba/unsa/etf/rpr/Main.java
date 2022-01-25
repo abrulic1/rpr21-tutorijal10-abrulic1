@@ -13,7 +13,10 @@ import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/glavna.fxml"));
+        GlavnaController kontroler = new GlavnaController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/glavna.fxml"));
+        loader.setController(kontroler);
+        Parent root = loader.load();
         Scene scene = new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE);
         stage.setMinWidth(520);
         stage.setMinHeight(372);
@@ -21,6 +24,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
 
     public static void main(String[] args) {
         launch();

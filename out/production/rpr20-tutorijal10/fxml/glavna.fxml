@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.GlavnaController">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <right>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="120.0" BorderPane.alignment="CENTER">
          <children>
@@ -29,7 +29,7 @@
                <VBox.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </VBox.margin></Button>
-            <Button fx:id="btnObrisiGrad" mnemonicParsing="false" prefHeight="26.0" prefWidth="152.0" text="Obriši grad">
+            <Button fx:id="btnObrisiGrad" mnemonicParsing="false" onAction="#ObrisiGradAction" prefHeight="26.0" prefWidth="152.0" text="Obriši grad">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
