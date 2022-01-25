@@ -19,57 +19,55 @@ public class GradController {
     public Button btnCancel;
     public TextField fieldBrojStanovnika;
     public ChoiceBox<Drzava> choiceDrzava;
-   public Grad grad=null;
+    public Grad grad = null;
     GeografijaDAO dao = GeografijaDAO.getInstance();
-    private ArrayList<Grad> gradoviIzGeografijaDAO=dao.gradovi();
+    private ArrayList<Grad> gradoviIzGeografijaDAO = dao.gradovi();
     private ObservableList<Grad> gradovi;
-    private ArrayList<Drzava>drzaveIzGeografijaDAO=dao.drzave();
-    private ObservableList<Drzava> drzave=FXCollections.observableList(drzaveIzGeografijaDAO);
+    private ArrayList<Drzava> drzaveIzGeografijaDAO = dao.drzave();
+    private ObservableList<Drzava> drzave = FXCollections.observableList(drzaveIzGeografijaDAO);
 
-    public GradController(Grad gradKojiSeEdituje, ArrayList<Drzava> countries){
-        grad=gradKojiSeEdituje;
+    public GradController(Grad gradKojiSeEdituje, ArrayList<Drzava> countries) {
+        grad = gradKojiSeEdituje;
         //Još jedan parametar konstruktoru klase GradController - prima grad koji se edituje ili null ako je u pitanju dodavanje novog grada.
-        drzaveIzGeografijaDAO=countries;
+        drzaveIzGeografijaDAO = countries;
         //drzave=FXCollections.observableList(drzaveIzGeografijaDAO);
 
     }
 
     public GradController() {
-        drzave=FXCollections.observableList(drzaveIzGeografijaDAO);
+        drzave = FXCollections.observableList(drzaveIzGeografijaDAO);
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         choiceDrzava.setItems(drzave);
         choiceDrzava.getSelectionModel().selectFirst();
         //TextField i brojstanovnika su po defaoultu crven, kasnije postaju zeleni ili crveni zavisno od unosa
         fieldNaziv.getStyleClass().add("prazno");
         fieldBrojStanovnika.getStyleClass().add("prazno");
 
-        fieldNaziv.textProperty().addListener((obs,oldNaziv,newNaziv)->{
-            if(!newNaziv.trim().isEmpty()){
+        fieldNaziv.textProperty().addListener((obs, oldNaziv, newNaziv) -> {
+            if (!newNaziv.trim().isEmpty()) {
                 fieldNaziv.getStyleClass().removeAll("prazno");
                 fieldNaziv.getStyleClass().add("popunjeno");
-            }
-            else{
+            } else {
                 fieldNaziv.getStyleClass().removeAll("popunjeno");
                 fieldNaziv.getStyleClass().add("prazno");
             }
         });
 
-        fieldBrojStanovnika.textProperty().addListener((obs,oldBroj,newBroj)->{
-            int broj=0;
+        fieldBrojStanovnika.textProperty().addListener((obs, oldBroj, newBroj) -> {
+            int broj = 0;
 
-            try{
-                broj=Integer.parseInt(newBroj);
-            }catch(NumberFormatException e){
+            try {
+                broj = Integer.parseInt(newBroj);
+            } catch (NumberFormatException e) {
 
             }
-            if(!newBroj.trim().isEmpty() && broj>0){
+            if (!newBroj.trim().isEmpty() && broj > 0) {
                 fieldBrojStanovnika.getStyleClass().removeAll("prazno");
                 fieldBrojStanovnika.getStyleClass().add("popunjeno");
-            }
-            else{
+            } else {
                 fieldBrojStanovnika.getStyleClass().removeAll("popunjeno");
                 fieldBrojStanovnika.getStyleClass().add("prazno");
             }
@@ -78,18 +76,18 @@ public class GradController {
     }
 
     public void CancelAction(ActionEvent actionEvent) {
-        Stage stage=(Stage) btnCancel.getScene().getWindow();
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
 
     public Grad getGrad() {
-      return grad;
+        return grad;
     }
 
     public void btnOkAction(ActionEvent actionEvent) {
         String naziv = "";
         int brojStanovnika = 0;
-        String nazivDrzave="";
+        String nazivDrzave = "";
 
         if (!fieldNaziv.getText().isEmpty())
             naziv = fieldNaziv.getText();
@@ -103,15 +101,15 @@ public class GradController {
 
         if (!fieldBrojStanovnika.getText().trim().isEmpty() && broj > 0)
             brojStanovnika = broj;
-        if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0 && grad==null){
+        if (!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0 && grad == null) {
             //null, dodaje se novi grad, treba mu novi id
-            Grad novi=new Grad();
-            grad=novi;
-        grad.setNaziv(naziv);
-        grad.setBrojStanovnika(brojStanovnika);
-        grad.setDrzava(choiceDrzava.getSelectionModel().getSelectedItem());
-         int id=dao.IDGrada();
-         grad.setId(id);
+            Grad novi = new Grad();
+            grad = novi;
+            grad.setNaziv(naziv);
+            grad.setBrojStanovnika(brojStanovnika);
+            grad.setDrzava(choiceDrzava.getSelectionModel().getSelectedItem());
+            int id = dao.IDGrada();
+            grad.setId(id);
         }
         /*else if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0 && grad!=null){
             grad.setNaziv(naziv);
@@ -120,8 +118,9 @@ public class GradController {
             int stariID=dao.vratiStariIDGrada(naziv);
             grad.setId(stariID);
         }*/
-        if(!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0){
-        Stage stage=(Stage) btnOk.getScene().getWindow();
-        stage.close();}
+        if (!fieldNaziv.getText().isEmpty() && !fieldBrojStanovnika.getText().isEmpty() && broj > 0) {
+            Stage stage = (Stage) btnOk.getScene().getWindow();
+            stage.close();
+        }
     }
 }
